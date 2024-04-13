@@ -5,15 +5,20 @@ using UnityEngine;
 public class Enemymovement : MonoBehaviour
 {
     //making vairables
-    public float speed;
+    private float speed = 5;
     private float xDir;
     private float yDir;
+    private float dmg;
+    private float health;
     public Rigidbody2D body;
 
     // Start is called before the first frame update
     void Start()
     {
-        Vector2 scaleUp = new Vector2(transform.localScale.x + UnityEngine.Random.value, transform.localScale.y + UnityEngine.Random.value);
+        speed += UnityEngine.Random.Range(0, 5);
+        dmg = UnityEngine.Random.Range(15, 30);
+        health = dmg;
+        Vector2 scaleUp = new Vector2(transform.localScale.x + dmg/10, transform.localScale.y + dmg/10);
         transform.localScale = scaleUp;
         xDir = UnityEngine.Random.value;
         yDir = UnityEngine.Random.value;
@@ -24,5 +29,10 @@ public class Enemymovement : MonoBehaviour
     {
         Vector2 direction = new Vector2(xDir, yDir).normalized;
         body.velocity = direction * speed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
     }
 }
