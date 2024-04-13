@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
+public class Bomb : Summonable
 {
     public float radius = 5.0F;
     public float power = 10.0F;
     public AudioClip sfx;
     public GameObject explosionEffect;
 
+    
 
     void Start()
     {
-        Explode();
-        Destroy(this, 0.1f);
+        maxSize = 1f;
+        _size = 1f;
     }
 
     private void OnDrawGizmos()
@@ -45,4 +46,16 @@ public class Bomb : MonoBehaviour
             }
         }
     }
+    
+    public override void Summon()
+    {   
+        Explode();
+        Destroy(this, 0.1f);
+    }
+    
+    public override void Grow()
+    {
+        // Nothing
+    }
+
 }

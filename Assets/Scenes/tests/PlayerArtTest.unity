@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &193482600 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7002238005850410669, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
-  m_PrefabInstance: {fileID: 7371240413589506663}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &194883908
 GameObject:
   m_ObjectHideFlags: 3
@@ -246,6 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c674c308d02b4e33a5b5ead22f87d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orthoBaseSize: 10
+  orthoSizeChangeDuration: 0.5
 --- !u!114 &966994134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,10 +262,10 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 0
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 193482600}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 12.19
+    OrthographicSize: 16.61777
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -363,7 +360,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12.19
+  orthographic size: 16.61777
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -436,6 +433,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3710379274285434501, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
+      propertyPath: maxSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7002238005850410669, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -493,6 +494,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 909657358087022697, guid: daf61ef4563ee4fc08d332d8c714f30d, type: 3}
+      propertyPath: summonables.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 909657358087022697, guid: daf61ef4563ee4fc08d332d8c714f30d, type: 3}
+      propertyPath: summonables.Array.data[0]
+      value: 
+      objectReference: {fileID: 2118684140750623770, guid: 2c9f44e28e6f84a48bd077760834fccb, type: 3}
+    - target: {fileID: 909657358087022697, guid: daf61ef4563ee4fc08d332d8c714f30d, type: 3}
+      propertyPath: summonables.Array.data[1]
+      value: 
+      objectReference: {fileID: 504226915157845475, guid: d01a324787c3d469d97ae73dceb5a98e, type: 3}
     - target: {fileID: 4123194564438438628, guid: daf61ef4563ee4fc08d332d8c714f30d, type: 3}
       propertyPath: m_Name
       value: ClickController
