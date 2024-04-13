@@ -5,23 +5,25 @@ using Random = UnityEngine.Random;
 public class Asteroid : MonoBehaviour
 {
     [SerializeField] private ParticleSystem destroyedParticles;
-    public int size = 3;
 
+    public Rigidbody2D rb;
+    public float size = 3f;
 
     private void Start()
     {
-        // Scale based on the size.
+        rb = GetComponent<Rigidbody2D>();
+        transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
         transform.localScale = 5f * size * Vector3.one;
-
-        // Add movement, bigger asteroids are slower.
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        Vector2 direction = new Vector2(Random.value, Random.value).normalized;
-        float spawnSpeed = Random.Range(4f - size, 5f - size);
-        rb.AddForce(direction * spawnSpeed, ForceMode2D.Impulse);
+        rb.AddTorque(Random.Range(-0.01f, 0.01f), ForceMode2D.Impulse);
+        RandomKick();
 
         // Register creation
         GameManager.Instance.asteroidCount++;
     }
+
+
+
+
 
     private void Update()
     {
@@ -39,24 +41,7 @@ public class Asteroid : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Player.Instance.TakeDamage(10f * size);
-
-            // If size > 1 spawn 2 smaller asteroids of size-1.
-            if (size > 1)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    Asteroid newAsteroid = Instantiate(this, transform.position,
-                        Quaternion.identity);
-                    newAsteroid.size = size - 1;
-                }
-            }
-
-            // Spawn particles on destruction.
-            if (destroyedParticles != null)
-                Instantiate(destroyedParticles, transform.position, Quaternion.identity);
-
-            // Destroy this asteroid.
-            Destroy(gameObject);
+            TakeDamage(0);
         }
     }
 
@@ -64,5 +49,41 @@ public class Asteroid : MonoBehaviour
     {
         if (GameManager.Instance != null)
             GameManager.Instance.asteroidCount--;
+    }
+
+
+    public void TakeDamage(float damage)
+    {
+        // If size > 1 spawn 2 smaller asteroids of size-1.
+        if (size > 1)
+        {
+            for (int i = 0; i < 2; i++)
+            {
+                Asteroid newAsteroid = Instantiate(this, transform.position,
+                    Quaternion.identity);
+                newAsteroid.size = size - 1;
+                
+            }
+        }
+
+
+        // Spawn particles on destruction.
+        if (destroyedParticles != null)
+            Instantiate(destroyedParticles, transform.position, Quaternion.identity);
+
+        // Destroy this asteroid.
+        Destroy(gameObject);
+    }
+
+    void RandomKick(float baseMagnitude = 3f)
+    {
+        Vector2 direction = new Vector2(Random.value, Random.value).normalized;
+        KickInDirection(direction, baseMagnitude);
+    }
+
+    void KickInDirection(Vector2 direction, float baseMagnitude = 3f)
+    {
+        float spawnSpeed = baseMagnitude + Random.Range(4f - size, 5f - size);
+        rb.AddForce(direction * spawnSpeed, ForceMode2D.Impulse);
     }
 }

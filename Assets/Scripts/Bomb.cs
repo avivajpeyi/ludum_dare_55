@@ -7,12 +7,13 @@ public class Bomb : MonoBehaviour
     public float radius = 5.0F;
     public float power = 10.0F;
     public AudioClip sfx;
+    public GameObject explosionEffect;
 
-    private bool _exploded = false;
 
     void Start()
     {
         Explode();
+        Destroy(this, 0.1f);
     }
 
     private void OnDrawGizmos()
@@ -24,15 +25,11 @@ public class Bomb : MonoBehaviour
 
     void Explode()
     {
-        if (_exploded)
-            return;
-
-        Debug.Log("Bomb Exploded!");
-        _exploded = true;
-
         Vector2 explosionPos = transform.position;
-
+        // Instantiate the explosion effect
+        Instantiate(explosionEffect, explosionPos, Quaternion.identity);
         
+
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
         foreach (Collider2D hit in colliders)
@@ -40,12 +37,12 @@ public class Bomb : MonoBehaviour
             Rigidbody2D _rb = hit.GetComponent<Rigidbody2D>();
             if (_rb != null)
             {
-                Vector2 direction = (hit.transform.position - transform.position).normalized;
+                Vector2 direction =
+                    (hit.transform.position - transform.position).normalized;
                 _rb.AddForce(direction * power, ForceMode2D.Impulse);
-                
+
                 // send TakeDamage event to any rb with TakeDamage method
                 hit.SendMessage("TakeDamage", 10, SendMessageOptions.DontRequireReceiver);
-                
             }
         }
     }
