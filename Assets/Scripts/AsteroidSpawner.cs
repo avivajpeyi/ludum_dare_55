@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : Singleton<GameManager> {
+public class AsteroidSpawner : Singleton<AsteroidSpawner> {
     [SerializeField] private Asteroid asteroidPrefab;
   
     
@@ -16,11 +16,7 @@ public class GameManager : Singleton<GameManager> {
         if (asteroidCount < maxAsteroids) {
             SpawnAsteroid();
         }
-        
-        
     }
-    
-    
     
 
     private void SpawnAsteroid() {
@@ -46,19 +42,5 @@ public class GameManager : Singleton<GameManager> {
     
     }
 
-    public void GameOver() {
-        StartCoroutine(Restart());
-    }
 
-    private IEnumerator Restart() {
-        Debug.Log("Game Over");
-
-        // Wait a bit before restarting.
-        yield return new WaitForSeconds(2f);
-
-        // Restart scene.
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-        yield return null;
-    }
 }

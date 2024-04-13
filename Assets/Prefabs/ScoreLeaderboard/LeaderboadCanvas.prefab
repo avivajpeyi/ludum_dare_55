@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 3216519347095316802}
   - component: {fileID: 6420853447438994785}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: LeaderboadCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

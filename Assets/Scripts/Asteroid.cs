@@ -18,7 +18,7 @@ public class Asteroid : MonoBehaviour
         RandomKick();
 
         // Register creation
-        GameManager.Instance.asteroidCount++;
+        AsteroidSpawner.Instance.asteroidCount++;
     }
 
 
@@ -47,8 +47,8 @@ public class Asteroid : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (GameManager.Instance != null)
-            GameManager.Instance.asteroidCount--;
+        if (AsteroidSpawner.Instance != null)
+            AsteroidSpawner.Instance.asteroidCount--;
     }
 
 
