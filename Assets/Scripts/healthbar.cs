@@ -1,7 +1,8 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SliderController : MonoBehaviour {
+public class PlayerHealthbarUI : Singleton<PlayerHealthbarUI> {
     private Slider _health;
     private KeyCode _damageKey = KeyCode.Space;
 
@@ -10,6 +11,15 @@ public class SliderController : MonoBehaviour {
         _health.minValue = 0f;
         _health.maxValue = 100f;
         _health.value = 100f; // Health bar starts full
+        
+        // Subscribe to player damage event
+        Player.OnPlayerTakeDamage += TakeDamage;
+    }
+
+    private void OnDestroy()
+    {
+        // Unsubscribe from player damage event
+        Player.OnPlayerTakeDamage -= TakeDamage;
     }
 
     void Update() {
@@ -24,8 +34,10 @@ public class SliderController : MonoBehaviour {
             TakeDamage(20f); //TODO: Replace hard coded damage value with value recieved from collision event
         }
 
-        if(_health.value == _health.minValue) {
-            PlayerDeath();
+        if(_health.value == _health.minValue)
+        {
+            // Player.Instance.Die();
+            Debug.Log("Player died!");
         }
     }
 
@@ -33,7 +45,4 @@ public class SliderController : MonoBehaviour {
         _health.value -= damageValue;
     }
 
-    void PlayerDeath() {
-        Debug.Log("You have died."); // TODO: Replace with actual player death sequence
-    } 
 }
