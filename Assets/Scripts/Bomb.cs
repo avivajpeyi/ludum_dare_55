@@ -30,7 +30,6 @@ public class Bomb : MonoBehaviour
         Instantiate(explosionEffect, explosionPos, Quaternion.identity);
         
 
-
         Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
         foreach (Collider2D hit in colliders)
         {
