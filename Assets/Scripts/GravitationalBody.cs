@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -14,6 +15,14 @@ public class GravitationalBody : MonoBehaviour
 
 	//muse a static list of bodies so that we don't need to Find them every frame
 	static List<Rigidbody2D> attractableBodies = new List<Rigidbody2D>();
+
+	private void OnDrawGizmos()
+	{
+		
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, maxDistance);
+	}
+
 
 	void Start() {
 
