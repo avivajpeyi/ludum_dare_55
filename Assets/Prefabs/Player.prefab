@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2190952108064896886}
   - component: {fileID: 6759727791270407946}
   - component: {fileID: 3557767858509010974}
+  - component: {fileID: 3444158720741003072}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -275,3 +276,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2664343ff238c461184ee3a9430c621d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 30
+--- !u!114 &3444158720741003072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8037657139874810476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955ebb1019f8a4dd6b13251cc3dc92a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 1000
+  startingMass: 100
+  initialVelocity: {x: 0, y: 0}
