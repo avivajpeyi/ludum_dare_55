@@ -8,8 +8,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 114912522897054100}
-  - component: {fileID: 5321358913394261076}
+  - component: {fileID: 7002238005850410669}
+  - component: {fileID: 6899438217131251377}
+  - component: {fileID: 8639149613945587194}
+  - component: {fileID: 2190952108064896886}
+  - component: {fileID: 6759727791270407946}
+  - component: {fileID: 3557767858509010974}
+  - component: {fileID: 3444158720741003072}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -306,8 +311,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2664343ff238c461184ee3a9430c621d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   maxSpeed: 30
   MaxHealth: 100
 --- !u!1001 &2596633855740109007
@@ -320,7 +325,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 509327183506945481, guid: 438a0bff55833e0d893ee128441c098d, type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: 1af7371fbbb27a1e990b5420761e33af, type: 2}
     - target: {fileID: 609983128494117668, guid: 438a0bff55833e0d893ee128441c098d, type: 3}
       propertyPath: moveWithTransform
@@ -396,7 +401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3350599605295069815, guid: 438a0bff55833e0d893ee128441c098d, type: 3}
       propertyPath: ShapeModule.m_Texture
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 3350599605295069815, guid: 438a0bff55833e0d893ee128441c098d, type: 3}
       propertyPath: SizeModule.curve.scalar

@@ -7,6 +7,8 @@ public class ClickController : Singleton<ClickController>
     public List<GameObject> summonables;
 
 
+    private int spwnIndex = 0;
+    
     Vector3 mousePos
     {
         get
@@ -20,9 +22,8 @@ public class ClickController : Singleton<ClickController>
 
     void SpawnOnMouseClick()
     {
-        
-        int randomIndex = Random.Range(0, summonables.Count);
-        Instantiate(summonables[randomIndex], mousePos, Quaternion.identity);
+        int idx = Random.Range(0, summonables.Count);
+        Instantiate(summonables[idx], mousePos, Quaternion.identity);
     }
 
 

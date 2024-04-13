@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -14,6 +15,14 @@ public class GravitationalBody : MonoBehaviour
 
 	//muse a static list of bodies so that we don't need to Find them every frame
 	static List<Rigidbody2D> attractableBodies = new List<Rigidbody2D>();
+
+	private void OnDrawGizmos()
+	{
+		
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, maxDistance);
+	}
+
 
 	void Start() {
 
@@ -56,13 +65,17 @@ public class GravitationalBody : MonoBehaviour
 		float distance = Mathf.Clamp (relativePosition.magnitude, 0, maxDistance);
 
 		//the force of gravity will reduce by the distance squared
-		float gravityFactor = 1f - (Mathf.Sqrt(distance) / Mathf.Sqrt(maxDistance));
+		float gravityFactor = 1f - Mathf.Sqrt(distance/ maxDistance);
 
 		//creates a vector that will force the otherbody toward this body,
 		//using the gravity factor times the mass of this body as the magnitude
 		Vector2 gravitationalForce = relativePosition.normalized * (gravityFactor * GetComponent<Rigidbody2D>().mass);
 		return gravitationalForce;
 		
+	}
+	
+	public void RemoveItemFromList(Rigidbody2D body) {
+		attractableBodies.Remove(body);
 	}
 	
 }
