@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickController : StaticInstance<ClickController>
+public class ClickController : Singleton<ClickController>
 {
     public List<GameObject> summonables;
 
