@@ -5,27 +5,19 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
+    private GoalSpawner spawner;
 
     void Start() {
-        Debug.Log("Goal is being set.");
-        // GoalPointer.Instance.currentGoal = this.gameObject;
         FindObjectOfType<GoalPointer>().currentGoal = this.gameObject;
-
+        spawner = FindObjectOfType<GoalSpawner>();
     }
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Collider Triggered");
         if (other.CompareTag("Player"))
         {
+            spawner.SpawnGoal();
             Destroy(this.gameObject);
         }
-    }
-
-    void OnDestroy()
-    {
-        Debug.Log("On Destroy Triggered");
-        // Instantiate(triggerFx, transform.position, Quaternion.identity);
-        //gravitationalBody.RemoveItemFromList(GetComponent<Rigidbody2D>());
-        // Fade out the object
     }
 }
