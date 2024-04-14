@@ -30,7 +30,7 @@ public class SoundManager : MonoBehaviour
         audioSource.clip = soundClip;
 
         //assign volume
-        audioSource.volume = volume;
+        audioSource.volume = volume * 0.4f;
 
         //play the sound
         audioSource.Play();
@@ -48,7 +48,7 @@ public class SoundManager : MonoBehaviour
 
         audioSource.clip = soundClip;
 
-        audioSource.volume = volume;
+        audioSource.volume = volume * 0.3f;
 
         audioSource.loop = true;
 
