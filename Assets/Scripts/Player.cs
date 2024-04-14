@@ -7,6 +7,7 @@ public class Player : Singleton<Player>
 {
     // Enforce that the player is facing in front (along direction of motion all the time)
 
+    public GameObject gameOverFX;
     private Rigidbody2D _rb;
     public float maxSpeed = 30f;
     public float MaxHealth = 100f;
@@ -14,6 +15,8 @@ public class Player : Singleton<Player>
 
 
     public static event Action<float> OnPlayerTakeDamage;
+    public static event Action OnGameOver;
+    public void TriggerGameOver() => OnGameOver?.Invoke();
 
     public float speed
     {
@@ -50,12 +53,22 @@ public class Player : Singleton<Player>
         // Trigger the takedamage event
         MaxHealth -= damage;
         OnPlayerTakeDamage?.Invoke(damage);
+        
+        if (MaxHealth <= 0)
+        {
+            Die();
+        }
     }
 
     public void Die()
     {
         // Destroy the player object
         Debug.Log("Player died!");
-        Destroy(gameObject);
+        TriggerGameOver();
+        // Play the Game over FX
+        _rb.velocity = Vector2.zero;
+        // Make _rb fixed postion (cant move)
+        _rb.isKinematic = true;
+        
     }
 }
