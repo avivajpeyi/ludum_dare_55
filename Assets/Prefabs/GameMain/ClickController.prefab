@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9946b882e0584505a0b4b7254285741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  summonables:
-  - {fileID: 504226915157845475, guid: d01a324787c3d469d97ae73dceb5a98e, type: 3}
+  BombPrefab: {fileID: 504226915157845475, guid: d01a324787c3d469d97ae73dceb5a98e, type: 3}
+  AttractorPrefab: {fileID: 2118684140750623770, guid: 2c9f44e28e6f84a48bd077760834fccb, type: 3}
+  doubleClickTimeThreshold: 0.16
+  longClickTimeThreshold: 0.16
