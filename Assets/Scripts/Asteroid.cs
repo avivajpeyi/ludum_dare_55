@@ -11,7 +11,7 @@ public class Asteroid : MonoBehaviour
     public float size = 3f;
 
     public float maxDistanceFromPlayer = 50f;
-
+    public GameObject myprefab;
     private void Start()
     {
         
@@ -69,6 +69,11 @@ public class Asteroid : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+    	if (myprefab != null)
+        {
+        Instantiate(myprefab, transform.position, Quaternion.identity);
+        }
+    	//Instantiate(myprefab, transform.position, Quaternion.identity);
         // If size > 1 spawn 2 smaller asteroids of size-1.
         if (size > 1)
         {
@@ -77,12 +82,14 @@ public class Asteroid : MonoBehaviour
                 Asteroid newAsteroid = Instantiate(this, transform.position,
                     Quaternion.identity);
                 newAsteroid.size = size - 1;
+                Instantiate(myprefab, transform.position, Quaternion.identity);
             }
         }
 
 
         // Spawn particles on destruction.
         if (destroyedParticles != null)
+            //Instantiate(myprefab, transform.position, Quaternion.identity);
             Instantiate(destroyedParticles, transform.position, Quaternion.identity);
 
         // Destroy this asteroid.

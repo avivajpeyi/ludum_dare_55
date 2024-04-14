@@ -7,6 +7,8 @@ public class Attractor : Summonable
 {
     public GameObject triggerFx;
     GravitationalBody gravitationalBody;
+
+    private ParticleSystem fieldFX;
     private Rigidbody2D rb;
 
     [SerializeField]
@@ -25,9 +27,19 @@ public class Attractor : Summonable
         _size = initSize;
         gravitationalBody = GetComponent<GravitationalBody>();
         gravitationalBody.enabled = false;
+        fieldFX = GetComponentInChildren<ParticleSystem>();
+        UpdateField();
     }
 
 
+    void UpdateField()
+    {
+        var main = fieldFX.main;
+        main.scalingMode = ParticleSystemScalingMode.Local;
+        fieldFX.transform.localScale = new Vector3(_size*3, _size*3, 1);
+    }
+    
+    
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Triggered");
@@ -47,6 +59,7 @@ public class Attractor : Summonable
     public override void Summon()
     {
         gravitationalBody.enabled = true;
+
         Destroy(this.gameObject, 2f);
     }
 
@@ -61,6 +74,8 @@ public class Attractor : Summonable
 
         _size += 0.1f;
         transform.localScale = new Vector3(_size, _size, 1);
+        UpdateField();
+        
         // Increase the gravitational pull of the attractor
         rb.mass = Mathf.Pow(_size + 20, 2)/4;
         gravitationalBody.maxDistance = initDistance * _size * distanceMultiplier;
