@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : Singleton<Player>
 {
-    // Enforce that the player is facing in front (along diurection of motion all the time)
+    // Enforce that the player is facing in front (along direction of motion all the time)
 
     private Rigidbody2D _rb;
     public float maxSpeed = 30f;
