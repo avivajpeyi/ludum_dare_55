@@ -28,7 +28,7 @@ public class PlayerHealthbarUI : Singleton<PlayerHealthbarUI> {
         // Health regeneration over time until full
         if(_health.minValue < _health.value
         && _health.value < _health.maxValue) {
-            _health.value += 5f * Time.deltaTime;
+            _health.value += 2f * Time.deltaTime;
         }
 
         
