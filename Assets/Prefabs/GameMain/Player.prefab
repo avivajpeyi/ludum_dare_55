@@ -55,7 +55,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.01
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 003cf63a909c94d60882860b9ee829d9, type: 2}
   m_IncludeLayers:
@@ -66,7 +66,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &5089460329244243124
 CircleCollider2D:
@@ -115,8 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2664343ff238c461184ee3a9430c621d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 30
-  MaxHealth: 100
+  gameOverFX: {fileID: 0}
+  maxSpeed: 15
+  MaxHealth: 200
 --- !u!114 &5076406772701831208
 MonoBehaviour:
   m_ObjectHideFlags: 0

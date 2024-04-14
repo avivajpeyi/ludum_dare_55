@@ -65,7 +65,7 @@ public class GravitationalBody : MonoBehaviour
 		float distance = Mathf.Clamp (relativePosition.magnitude, 0, maxDistance);
 
 		//the force of gravity will reduce by the distance squared
-		float gravityFactor = 1f - Mathf.Sqrt(distance/ maxDistance);
+		float gravityFactor = Mathf.Sqrt(maxDistance/distance);
 
 		//creates a vector that will force the otherbody toward this body,
 		//using the gravity factor times the mass of this body as the magnitude

@@ -6,17 +6,20 @@ using UnityEngine;
 public class Goal : MonoBehaviour
 {
     private GoalSpawner spawner;
+    private PlayerScore score;
 
     void Start() {
+        
         FindObjectOfType<GoalPointer>().currentGoal = this.gameObject;
         spawner = FindObjectOfType<GoalSpawner>();
+        score = FindObjectOfType<PlayerScore>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collider Triggered");
         if (other.CompareTag("Player"))
         {
+            score.IncreaseScore();
             spawner.SpawnGoal();
             Destroy(this.gameObject);
         }
