@@ -33,6 +33,7 @@ public class Bomb : Summonable
         Vector2 explosionPos = transform.position;
         // Instantiate the explosion effect
         Instantiate(explosionEffect, explosionPos, Quaternion.identity);
+        SoundManager.instance.playSound(sfx, transform, 1f);
         
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
@@ -62,10 +63,6 @@ public class Bomb : Summonable
         }
         
         
-        if (SoundManager.Instance != null)
-        {
-            SoundManager.Instance.playBombSFX(transform, 1f);
-        }
         
     }
     

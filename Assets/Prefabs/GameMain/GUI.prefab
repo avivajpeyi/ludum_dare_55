@@ -141,13 +141,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Click+hold to summon gravitational fields
+  m_text: 'Click and hold to summon gravitational fields
 
     Double click to summon
     bombs'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 678230f13f9204d358273c2ad9362c19, type: 2}
+  m_sharedMaterial: {fileID: -4960374654002991533, guid: 678230f13f9204d358273c2ad9362c19, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.15
+  m_fontSize: 40.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -609,6 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25045d400c94e47fb85a23007eb0031b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  game_over_text: {fileID: 0}
 --- !u!1 &8810619412800733514
 GameObject:
   m_ObjectHideFlags: 0

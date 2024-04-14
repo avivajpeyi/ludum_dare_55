@@ -11,9 +11,15 @@ public class Attractor : Summonable
     private ParticleSystem fieldFX;
     private Rigidbody2D rb;
 
-    [SerializeField] private float initSize = 0.5f;
-    [SerializeField] private float initDistance = 1f;
-    [SerializeField] private float distanceMultiplier = 100f;
+
+    [SerializeField]
+    private float initSize = 0.5f;
+    [SerializeField]
+    private float initDistance = 1f;
+    [SerializeField]
+    private float distanceMultiplier = 100f;
+    public AudioClip sfx;
+
 
 
     void Start()
@@ -40,7 +46,6 @@ public class Attractor : Summonable
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Triggered");
         if (other.CompareTag("Player"))
         {
             Destroy(this.gameObject);
@@ -56,10 +61,13 @@ public class Attractor : Summonable
 
     public override void Summon()
     {
+
         if (gravitationalBody != null)
         {
             gravitationalBody.enabled = true;
             Destroy(this.gameObject, 2f);
+            if (SoundManager.instance != null)
+                SoundManager.instance.playSound(sfx, transform, 1f);
         }
     }
 
