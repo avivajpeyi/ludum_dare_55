@@ -13,6 +13,7 @@ public class Bomb : MonoBehaviour
     void Start()
     {
         Explode();
+        SoundManager.instance.playExplosion(sfx, transform, 1f);
         Destroy(this, 0.1f);
     }
 
