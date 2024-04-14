@@ -11,10 +11,10 @@ public class Player : Singleton<Player>
     public float maxSpeed = 30f;
     public float MaxHealth = 100f;
     private float _currentHealth = 100f;
-    
+
 
     public static event Action<float> OnPlayerTakeDamage;
-    
+
     public float speed
     {
         get { return _rb.velocity.magnitude; }
@@ -30,8 +30,8 @@ public class Player : Singleton<Player>
     {
         get { return _rb.velocity.normalized; }
     }
-    
-    
+
+
     private void FixedUpdate()
     {
         if (dir != Vector2.zero)
@@ -44,9 +44,6 @@ public class Player : Singleton<Player>
         _rb.velocity = Vector2.ClampMagnitude(_rb.velocity, maxSpeed);
     }
 
-
-    
-    
 
     public void TakeDamage(float damage)
     {
@@ -61,7 +58,4 @@ public class Player : Singleton<Player>
         Debug.Log("Player died!");
         Destroy(gameObject);
     }
-    
-    
-    
 }

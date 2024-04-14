@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,8 +10,16 @@ public class Asteroid : MonoBehaviour
     public Rigidbody2D rb;
     public float size = 3f;
 
+    public float maxDistanceFromPlayer = 50f;
+
     private void Start()
     {
+        
+        // DoTween animation to smoothly spawn the asteroid.
+        transform.localScale = Vector3.zero;
+        Vector3 endSize = 5f * size * Vector3.one;
+        transform.DOScale(endSize, 0.5f).SetEase(Ease.OutBounce);
+        
         rb = GetComponent<Rigidbody2D>();
         transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
         transform.localScale = 5f * size * Vector3.one;
@@ -22,14 +31,20 @@ public class Asteroid : MonoBehaviour
     }
 
 
-
+    float DistFromPlayer
+    {
+        get
+        {
+            return Vector2.Distance(Player.Instance.transform.position,
+                transform.position);
+        }
+    }
 
 
     private void Update()
     {
         // If really far from Player, destroy
-        if (Vector2.Distance(Player.Instance.transform.position, transform.position) >
-            20f)
+        if (DistFromPlayer > maxDistanceFromPlayer)
         {
             Destroy(gameObject);
         }
@@ -62,7 +77,6 @@ public class Asteroid : MonoBehaviour
                 Asteroid newAsteroid = Instantiate(this, transform.position,
                     Quaternion.identity);
                 newAsteroid.size = size - 1;
-                
             }
         }
 
