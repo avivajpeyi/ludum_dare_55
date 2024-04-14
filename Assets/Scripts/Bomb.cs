@@ -43,9 +43,9 @@ public class Bomb : Summonable
                 Vector2 direction =
                     (hit.transform.position - transform.position).normalized;
                 _rb.AddForce(direction * power, ForceMode2D.Impulse);
-
-                // send TakeDamage event to any rb with TakeDamage method
-                hit.SendMessage("TakeDamage", 10, SendMessageOptions.DontRequireReceiver);
+                
+                if (hit!=null)
+                    hit.SendMessage("TakeDamage", 10, SendMessageOptions.DontRequireReceiver);
             }
         }
     }

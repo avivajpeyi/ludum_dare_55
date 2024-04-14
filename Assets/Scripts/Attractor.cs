@@ -66,12 +66,16 @@ public class Attractor : Summonable
     public override void Grow()
     {
         // Increase size of the attractor
+        
 
         if (_size > maxSize)
         {
             return;
         }
 
+        if (this == null)
+            return;
+        
         _size += 0.1f;
         transform.localScale = new Vector3(_size, _size, 1);
         UpdateField();
