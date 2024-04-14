@@ -140,7 +140,7 @@ public class ClickController : Singleton<ClickController>
         _currentAttractor = Instantiate(AttractorPrefab, mousePos, Quaternion.identity)
             .GetComponent<Attractor>();
         startGrowing = true;
-        
+
     }
 
     void SummonAttractor()
