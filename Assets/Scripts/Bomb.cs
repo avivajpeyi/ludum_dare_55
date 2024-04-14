@@ -38,11 +38,7 @@ public class Bomb : Summonable
         Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
         foreach (Collider2D hit in colliders)
         {
-            // if hit is player skip
-            if (hit.CompareTag("Player"))
-            {
-                continue;
-            }
+    
             
             Rigidbody2D _rb = hit.GetComponent<Rigidbody2D>();
             if (_rb != null)
@@ -53,6 +49,11 @@ public class Bomb : Summonable
                     (hit.transform.position - transform.position).normalized;
                 _rb.AddForce(direction * power, ForceMode2D.Impulse);
                 
+                // if hit is player skip
+                if (hit.CompareTag("Player"))
+                {
+                    continue;
+                }
                 
                 
                 if (hit!=null)
