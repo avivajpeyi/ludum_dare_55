@@ -11,6 +11,7 @@ public class Goal : MonoBehaviour
         FindObjectOfType<GoalPointer>().currentGoal = this.gameObject;
         spawner = FindObjectOfType<GoalSpawner>();
     }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Collider Triggered");

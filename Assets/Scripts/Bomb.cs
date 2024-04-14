@@ -16,7 +16,6 @@ public class Bomb : Summonable
         maxSize = 1f;
         _size = 1f;
         Explode();
-        SoundManager.instance.playSound(sfx, transform, 1f);
         Destroy(this, 0.1f);
     }
 
@@ -29,6 +28,8 @@ public class Bomb : Summonable
 
     void Explode()
     {
+        
+        
         Vector2 explosionPos = transform.position;
         // Instantiate the explosion effect
         Instantiate(explosionEffect, explosionPos, Quaternion.identity);
@@ -37,17 +38,34 @@ public class Bomb : Summonable
         Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
         foreach (Collider2D hit in colliders)
         {
+            // if hit is player skip
+            if (hit.CompareTag("Player"))
+            {
+                continue;
+            }
+            
             Rigidbody2D _rb = hit.GetComponent<Rigidbody2D>();
             if (_rb != null)
             {
+                
+                
                 Vector2 direction =
                     (hit.transform.position - transform.position).normalized;
                 _rb.AddForce(direction * power, ForceMode2D.Impulse);
+                
+                
                 
                 if (hit!=null)
                     hit.SendMessage("TakeDamage", 10, SendMessageOptions.DontRequireReceiver);
             }
         }
+        
+        
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.playBombSFX(transform, 1f);
+        }
+        
     }
     
     public override void Summon()

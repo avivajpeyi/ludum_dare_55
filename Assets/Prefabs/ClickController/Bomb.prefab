@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c054d45fa2eba4b258fc7338e2b8646c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSize: 0
   radius: 2.56
   power: 10
   sfx: {fileID: 0}

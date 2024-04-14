@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class GoalSpawner : MonoBehaviour {
     public GameObject goal;
-    public GameObject goalSpawner;
+    
     public float spawnRadius = 10f;
     private GameObject currentGoal;
+    private GameObject pointer;
 
     void Start() {
-        SpawnGoal();
+       SpawnGoal();
+       pointer = FindObjectOfType<GoalPointer>().gameObject;
     }
 
     public void SpawnGoal() {
@@ -23,5 +25,7 @@ public class GoalSpawner : MonoBehaviour {
         Quaternion randomRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
 
         currentGoal = Instantiate(goal, spawnPosition, randomRotation);
+        pointer.GetComponent<GoalPointer>().currentGoal = currentGoal;
+        
     }
 }
