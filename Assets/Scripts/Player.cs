@@ -30,8 +30,9 @@ public class Player : Singleton<Player>
     {
         get { return _rb.velocity.normalized; }
     }
-
-    private void Update()
+    
+    
+    private void FixedUpdate()
     {
         if (dir != Vector2.zero)
         {

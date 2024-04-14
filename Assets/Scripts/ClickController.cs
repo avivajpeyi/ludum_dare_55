@@ -6,9 +6,6 @@ public class ClickController : Singleton<ClickController>
 {
     public List<GameObject> summonables;
 
-    public float maxSize = 3f; // Maximum size of the object
-    public float sizeIncreaseSpeed = 1f; // Speed at which the object size increases
-    public float spawnDistance = 5f; // Distance from camera to spawn the object
 
     private bool isMouseDown = false;
     private Summonable summonableObj;

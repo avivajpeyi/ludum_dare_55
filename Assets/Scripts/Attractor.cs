@@ -9,8 +9,12 @@ public class Attractor : Summonable
     GravitationalBody gravitationalBody;
     private Rigidbody2D rb;
 
+    [SerializeField]
     private float initSize = 0.5f;
+    [SerializeField]
     private float initDistance = 1f;
+    [SerializeField]
+    private float distanceMultiplier = 100f;
     
 
 
@@ -59,6 +63,6 @@ public class Attractor : Summonable
         transform.localScale = new Vector3(_size, _size, 1);
         // Increase the gravitational pull of the attractor
         rb.mass = Mathf.Pow(_size + 20, 2)/4;
-        gravitationalBody.maxDistance = initDistance * _size * 10;
+        gravitationalBody.maxDistance = initDistance * _size * distanceMultiplier;
     }
 }
