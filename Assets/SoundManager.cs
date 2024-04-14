@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
+    [SerializeField] private AudioClip backgroundMusic;
     [SerializeField] private AudioSource soundObject;
 
     public void Awake()
@@ -16,6 +17,7 @@ public class SoundManager : MonoBehaviour
         else
         {
             instance = this;
+            playBackgroundMusic(backgroundMusic, transform, 1f);
         }
     }
 
@@ -38,5 +40,18 @@ public class SoundManager : MonoBehaviour
 
         //destroy the object after done playing music
         Destroy(audioSource.gameObject, clipLength);
+    }
+
+    public void playBackgroundMusic(AudioClip soundClip, Transform spawnTransform, float volume)
+    {
+        AudioSource audioSource = Instantiate(soundObject, spawnTransform.position, Quaternion.identity);
+
+        audioSource.clip = soundClip;
+
+        audioSource.volume = volume;
+
+        audioSource.loop = true;
+
+        audioSource.Play();
     }
 }

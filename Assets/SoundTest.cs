@@ -17,7 +17,7 @@ public class SoundTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SoundManager.instance.playExplosion(sfx, transform, 1f);
+            SoundManager.instance.playSound(sfx, transform, 1f);
         }
         
     }
