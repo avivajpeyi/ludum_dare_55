@@ -64,6 +64,7 @@ public class ClickController : Singleton<ClickController>
         OnDoubleClick += SpawnBomb;
         OnLongClickStart += SpawnAttractor;
         OnLongClickEnd += SummonAttractor;
+        Player.OnGameOver += Disable;
     }
 
     private void OnDestroy()
@@ -71,6 +72,7 @@ public class ClickController : Singleton<ClickController>
         OnDoubleClick -= SpawnBomb;
         OnLongClickStart -= SpawnAttractor;
         OnLongClickEnd -= SummonAttractor;
+        Player.OnGameOver -= Disable;
     }
 
 
@@ -152,5 +154,11 @@ public class ClickController : Singleton<ClickController>
         Bomb b = Instantiate(BombPrefab, mousePos, Quaternion.identity)
             .GetComponent<Bomb>();
         b.Summon();
+    }
+
+
+    void Disable()
+    {
+        this.enabled = false;
     }
 }

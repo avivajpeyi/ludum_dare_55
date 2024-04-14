@@ -55,7 +55,7 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Player.Instance.TakeDamage(10f * size);
+            Player.Instance.TakeDamage(5f * size);
             TakeDamage(0);
         }
     }
@@ -73,7 +73,6 @@ public class Asteroid : MonoBehaviour
         {
         Instantiate(myprefab, transform.position, Quaternion.identity);
         }
-    	//Instantiate(myprefab, transform.position, Quaternion.identity);
         // If size > 1 spawn 2 smaller asteroids of size-1.
         if (size > 1)
         {

@@ -15,6 +15,9 @@ public class Bomb : Summonable
     {
         maxSize = 1f;
         _size = 1f;
+        Explode();
+        SoundManager.instance.playSound(sfx, transform, 1f);
+        Destroy(this, 0.1f);
     }
 
     private void OnDrawGizmos()
