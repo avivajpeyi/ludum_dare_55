@@ -9,11 +9,10 @@ public class GoalPointer : StaticInstance<GoalPointer> {
             if (currentGoal == null)
                 return Vector3.zero;
 
-            return new Vector3(currentGoal.transform.position.x, currentGoal.transform.position.y, 0);
+            return new Vector3(currentGoal.transform.position.x, currentGoal.transform.position.y);
         }
     }
-    private GameObject pointer;
-    public GameObject currentGoal;
+    private GameObject pointer;    public GameObject currentGoal;
 
     public float offsetDistanceFromPlayer = 2f;
 
@@ -28,10 +27,14 @@ public class GoalPointer : StaticInstance<GoalPointer> {
         Vector3 toPosition = targetPosition;
         Vector3 fromPosition = new Vector3(Player.Instance.transform.position.x, Player.Instance.transform.position.y);
         Vector3 dir = (toPosition - fromPosition).normalized;
-        //pointerRectTransform.localEulerAngles = new Vector3(0,0,-90f); //Rotates the direction the pointer points in.
-        // 90f is a placeholder which points it to the right and should be replaced with the value of the angle between the player and goal
-         pointer.transform.position = fromPosition + dir * offsetDistanceFromPlayer;
-         Color color = Color.red;
+        
+        float angle = (Mathf.Atan2(dir.y, dir.x) - 89.5f) * Mathf.Rad2Deg;
+        pointer.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        pointer.transform.position = fromPosition + dir * offsetDistanceFromPlayer;
+        
+        // Debug red line drawn between player and goal
+        Color color = Color.red;
         Debug.DrawLine(fromPosition, toPosition, color);
     }
 }
