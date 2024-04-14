@@ -96,6 +96,7 @@ MonoBehaviour:
   initSize: 0.5
   initDistance: 1
   distanceMultiplier: 100
+  sfx: {fileID: 8300000, guid: 3669d33bde9077b4cb7b5da9a08e6b6a, type: 3}
 --- !u!58 &6559137452976679706
 CircleCollider2D:
   m_ObjectHideFlags: 0

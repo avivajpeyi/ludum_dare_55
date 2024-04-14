@@ -17,7 +17,8 @@ public class Attractor : Summonable
     private float initDistance = 1f;
     [SerializeField]
     private float distanceMultiplier = 100f;
-    
+    public AudioClip sfx;
+
 
 
     void Start()
@@ -59,7 +60,7 @@ public class Attractor : Summonable
     public override void Summon()
     {
         gravitationalBody.enabled = true;
-
+        SoundManager.instance.playSound(sfx, transform, 1f);
         Destroy(this.gameObject, 2f);
     }
 
