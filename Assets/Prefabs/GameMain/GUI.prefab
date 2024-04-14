@@ -507,6 +507,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7373496561769691939, guid: eab3819ef79d97f36a9d769664be89e7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7373496561769691939, guid: eab3819ef79d97f36a9d769664be89e7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7373496561769691939, guid: eab3819ef79d97f36a9d769664be89e7, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7880801250770947463, guid: eab3819ef79d97f36a9d769664be89e7, type: 3}
       propertyPath: m_Name
       value: PlayerHealthbar
