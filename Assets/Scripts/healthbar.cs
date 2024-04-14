@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class PlayerHealthbarUI : Singleton<PlayerHealthbarUI> {
     private Slider _health;
-    private KeyCode _damageKey = KeyCode.Space;
 
     void Start() {
         _health = GetComponent<Slider>();
@@ -14,12 +13,14 @@ public class PlayerHealthbarUI : Singleton<PlayerHealthbarUI> {
         
         // Subscribe to player damage event
         Player.OnPlayerTakeDamage += TakeDamage;
+        Player.OnGameOver += DisableHealthbar;
     }
 
     private void OnDestroy()
     {
         // Unsubscribe from player damage event
         Player.OnPlayerTakeDamage -= TakeDamage;
+        Player.OnGameOver -= DisableHealthbar;
     }
 
     void Update() {
@@ -29,20 +30,17 @@ public class PlayerHealthbarUI : Singleton<PlayerHealthbarUI> {
         && _health.value < _health.maxValue) {
             _health.value += 5f * Time.deltaTime;
         }
-        
-        if(Input.GetKeyDown(_damageKey)) { //TODO: Replace key press with event trigger
-            TakeDamage(20f); //TODO: Replace hard coded damage value with value recieved from collision event
-        }
 
-        if(_health.value == _health.minValue)
-        {
-            // Player.Instance.Die();
-            Debug.Log("Player died!");
-        }
+        
     }
 
     void TakeDamage(float damageValue) {
         _health.value -= damageValue;
     }
 
+    void DisableHealthbar() {
+        gameObject.SetActive(false);
+    }
+    
+    
 }

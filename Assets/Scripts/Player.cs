@@ -46,11 +46,18 @@ public class Player : Singleton<Player>
         // Clamp the speed of the player
         _rb.velocity = Vector2.ClampMagnitude(_rb.velocity, maxSpeed);
     }
-
+    
+    float damageCooldown = 0.5f;
 
     public void TakeDamage(float damage)
     {
-        // Trigger the takedamage event
+        // if has just taken damange, skip
+        if (Time.time - damageCooldown < 0.5f)
+        {
+            return;
+        }
+        
+        damageCooldown = Time.time;
         MaxHealth -= damage;
         OnPlayerTakeDamage?.Invoke(damage);
         

@@ -9,12 +9,14 @@ public class Asteroid : MonoBehaviour
 
     public Rigidbody2D rb;
     public float size = 3f;
+    private Player p;
 
     public float maxDistanceFromPlayer = 50f;
     public GameObject myprefab;
     private void Start()
     {
-        
+
+        p = FindObjectOfType<Player>();
         // DoTween animation to smoothly spawn the asteroid.
         transform.localScale = Vector3.zero;
         Vector3 endSize = 5f * size * Vector3.one;
@@ -35,7 +37,8 @@ public class Asteroid : MonoBehaviour
     {
         get
         {
-            return Vector2.Distance(Player.Instance.transform.position,
+            
+            return Vector2.Distance(p.transform.position,
                 transform.position);
         }
     }
@@ -55,8 +58,9 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Player.Instance.TakeDamage(5f * size);
+            Debug.Log("Asteroid collides with player");
             TakeDamage(0);
+            p.TakeDamage(10f * size);
         }
     }
 

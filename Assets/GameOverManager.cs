@@ -11,7 +11,7 @@ public class GameOverManager : MonoBehaviour
 
     public TMP_Text game_over_text;
 
-    private float timeBeforeRestartTxt = 1f;
+    private float timeBeforeRestartTxt = 1.5f;
     private bool canRestart = false;
     
 
@@ -27,6 +27,11 @@ public class GameOverManager : MonoBehaviour
         Player.OnGameOver += OnPlayerDeath;
     }
 
+    private void OnDestroy()
+    {
+        Player.OnGameOver -= OnPlayerDeath;
+    }
+
     private void OnPlayerDeath()
     {
         SetChildState(true);
@@ -39,6 +44,7 @@ public class GameOverManager : MonoBehaviour
     {
         foreach (var child in children)
         {
+            if (child == null) continue;
             child.SetActive(state);
         }
     }
@@ -46,7 +52,7 @@ public class GameOverManager : MonoBehaviour
     
     IEnumerator WaitAndTransition()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(timeBeforeRestartTxt);
         TransitionToRestartSuggestion();
     }
 

@@ -11,13 +11,9 @@ public class Attractor : Summonable
     private ParticleSystem fieldFX;
     private Rigidbody2D rb;
 
-    [SerializeField]
-    private float initSize = 0.5f;
-    [SerializeField]
-    private float initDistance = 1f;
-    [SerializeField]
-    private float distanceMultiplier = 100f;
-    
+    [SerializeField] private float initSize = 0.5f;
+    [SerializeField] private float initDistance = 1f;
+    [SerializeField] private float distanceMultiplier = 100f;
 
 
     void Start()
@@ -34,12 +30,14 @@ public class Attractor : Summonable
 
     void UpdateField()
     {
+        if (fieldFX == null)
+            return;
         var main = fieldFX.main;
         main.scalingMode = ParticleSystemScalingMode.Local;
-        fieldFX.transform.localScale = new Vector3(_size*3, _size*3, 1);
+        fieldFX.transform.localScale = new Vector3(_size * 3, _size * 3, 1);
     }
-    
-    
+
+
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Triggered");
@@ -58,15 +56,17 @@ public class Attractor : Summonable
 
     public override void Summon()
     {
-        gravitationalBody.enabled = true;
-
-        Destroy(this.gameObject, 2f);
+        if (gravitationalBody != null)
+        {
+            gravitationalBody.enabled = true;
+            Destroy(this.gameObject, 2f);
+        }
     }
 
     public override void Grow()
     {
         // Increase size of the attractor
-        
+
 
         if (_size > maxSize)
         {
@@ -75,13 +75,15 @@ public class Attractor : Summonable
 
         if (this == null)
             return;
-        
+
         _size += 0.1f;
         transform.localScale = new Vector3(_size, _size, 1);
         UpdateField();
-        
+
         // Increase the gravitational pull of the attractor
-        rb.mass = Mathf.Pow(_size + 20, 2)/4;
+        if (rb == null)
+            return;
+        rb.mass = Mathf.Pow(_size + 20, 2) / 4;
         gravitationalBody.maxDistance = initDistance * _size * distanceMultiplier;
     }
 }

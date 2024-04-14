@@ -10,8 +10,9 @@ public class GoalSpawner : MonoBehaviour {
     private GameObject pointer;
 
     void Start() {
-       SpawnGoal();
-       pointer = FindObjectOfType<GoalPointer>().gameObject;
+        pointer = FindObjectOfType<GoalPointer>().gameObject;
+        SpawnGoal();
+       
     }
 
     public void SpawnGoal() {
@@ -25,7 +26,10 @@ public class GoalSpawner : MonoBehaviour {
         Quaternion randomRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 360f));
 
         currentGoal = Instantiate(goal, spawnPosition, randomRotation);
-        pointer.GetComponent<GoalPointer>().currentGoal = currentGoal;
-        
+        GoalPointer p = pointer.GetComponent<GoalPointer>();
+        if (p != null) {
+            p.currentGoal = currentGoal;
+        }
+
     }
 }
