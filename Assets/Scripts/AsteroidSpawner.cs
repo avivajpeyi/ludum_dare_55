@@ -66,8 +66,24 @@ public class AsteroidSpawner : Singleton<AsteroidSpawner>
         Asteroid asteroid =
             Instantiate(asteroidPrefab, worldSpawnPosition, Quaternion.identity);
         
-        // Set size of asteroid to be 3 or 2 (20% of time)
-        asteroid.size = Random.value < 0.2f ? 3 : 2;
+        // Set size of asteroid to be 5 10% of the time, 4 20% of the time, 3 40% of the time, 2 40% of the time
+        int size = Random.Range(1, 11);
+        if (size == 1)
+        {
+            asteroid.updateSize(5);
+        }
+        else if (size <= 3)
+        {
+            asteroid.updateSize(4);
+        }
+        else if (size <= 7)
+        {
+            asteroid.updateSize(3);
+        }
+        else
+        {
+            asteroid.updateSize(2);
+        }
         
         
     }

@@ -19,12 +19,12 @@ public class Asteroid : MonoBehaviour
         p = FindObjectOfType<Player>();
         // DoTween animation to smoothly spawn the asteroid.
         transform.localScale = Vector3.zero;
-        Vector3 endSize = 5f * size * Vector3.one;
-        transform.DOScale(endSize, 0.5f).SetEase(Ease.OutBounce);
+        updateSize(size);
+        
         
         rb = GetComponent<Rigidbody2D>();
         transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
-        transform.localScale = 5f * size * Vector3.one;
+        
         rb.AddTorque(Random.Range(-0.01f, 0.01f), ForceMode2D.Impulse);
         RandomKick();
 
@@ -32,6 +32,20 @@ public class Asteroid : MonoBehaviour
         AsteroidSpawner.Instance.asteroidCount++;
     }
 
+
+    public void updateSize(float s)
+    {
+        size = s;
+        Vector3 endSize = 5f * size * Vector3.one;
+        // Do tween to smoothly scale the asteroid.
+        transform.DOScale(endSize, 0.5f).SetEase(Ease.OutBounce);
+        
+        // transform.DOScale(endSize, 0.5f).SetEase(Ease.OutBounce);
+        // Aftrer tween transform.localScale = 5f * size * Vector3.one;
+        
+
+    }
+    
 
     float DistFromPlayer
     {
