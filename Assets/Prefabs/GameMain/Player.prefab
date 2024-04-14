@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverFX: {fileID: 0}
-  maxSpeed: 25
+  maxSpeed: 30
   MaxHealth: 100
 --- !u!114 &5076406772701831208
 MonoBehaviour:
