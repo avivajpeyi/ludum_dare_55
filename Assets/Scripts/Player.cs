@@ -9,7 +9,7 @@ public class Player : Singleton<Player>
 
     public GameObject gameOverFX;
     private Rigidbody2D _rb;
-    public float maxSpeed = 30f;
+    public float maxSpeed = 20f;
     public float MaxHealth = 100f;
     private float _currentHealth = 100f;
 

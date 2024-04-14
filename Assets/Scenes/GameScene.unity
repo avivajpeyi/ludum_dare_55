@@ -444,6 +444,37 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 704790075187307185, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
+      propertyPath: m_text
+      value: 'Click + hold to summon gravitational fields
+
+        Double click to
+        summon bombs'
+      objectReference: {fileID: 0}
+    - target: {fileID: 704790075187307185, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 704790075187307185, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010902065292013597, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 26.8503
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010902065292013597, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 25.8304
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010902065292013597, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 28.029999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010902065292013597, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.5099983
+      objectReference: {fileID: 0}
     - target: {fileID: 4041181644617999967, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
@@ -564,6 +595,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7860568514203917650, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 61.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8810619412800733514, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -584,6 +619,22 @@ PrefabInstance:
     - target: {fileID: 3561667074923200446, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710379274285434501, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
+      propertyPath: maxSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710379274285434501, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
+      propertyPath: MaxHealth
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076406772701831208, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
+      propertyPath: maxDistance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076406772701831208, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
+      propertyPath: startingMass
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5696195704368011966, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -623,6 +674,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5696195704368011966, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272442483770624324, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272442483770624324, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272442483770624324, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272442483770624324, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7272442483770624324, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
+      propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

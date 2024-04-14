@@ -98,8 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c054d45fa2eba4b258fc7338e2b8646c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 2.56
-  power: 10
+  maxSize: 1
+  radius: 10
+  power: 400
   sfx: {fileID: 0}
   explosionEffect: {fileID: 6478029048956227354, guid: e52f95dcfc9334a5a9477f4e934bc263, type: 3}
 --- !u!1001 &708674344608324634
