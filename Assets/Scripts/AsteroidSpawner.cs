@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class AsteroidSpawner : Singleton<AsteroidSpawner>
 {
@@ -17,7 +19,12 @@ public class AsteroidSpawner : Singleton<AsteroidSpawner>
     [SerializeField]
     private float timeBwSpawns = 2f;
     private float timeSinceLastSpawn = 0f;
-    
+
+    [SerializeField]
+    private float minDistance = 30f;
+    [SerializeField]
+    private float maxDistance = 400f;
+
     void Update()
     {
         if (asteroidCount < maxAsteroids)
@@ -32,42 +39,35 @@ public class AsteroidSpawner : Singleton<AsteroidSpawner>
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        // Draw a sphere around min and max distance
+        Gizmos.color = Color.magenta;
+        Vector3 p = Vector3.zero;
+        if (Player.Instance != null)
+        {
+            p = Player.Instance.transform.position;
+        }
+        
+        Gizmos.DrawWireSphere(p, minDistance);
+        Gizmos.DrawWireSphere(p, maxDistance);
+        
+    }
+
 
     private void SpawnAsteroid()
     {
-        // How far along the edge.
-        float offset = Random.Range(0f, 1f);
-        Vector2 viewportSpawnPosition = Vector2.zero;
-
-        // Which edge.
-        int edge = Random.Range(0, 4);
-        if (edge == 0)
-        {
-            viewportSpawnPosition = new Vector2(offset, 0);
-        }
-        else if (edge == 1)
-        {
-            viewportSpawnPosition = new Vector2(offset, 1);
-        }
-        else if (edge == 2)
-        {
-            viewportSpawnPosition = new Vector2(0, offset);
-        }
-        else if (edge == 3)
-        {
-            viewportSpawnPosition = new Vector2(1, offset);
-        }
-
-        // Move a bit away from the edge.
-        viewportSpawnPosition += viewportSpawnPosition.normalized * 0.4f;
+        // Get random position in world around the player
+        Vector3 worldSpawnPosition = Player.Instance.transform.position +
+                                     Random.insideUnitSphere.normalized *
+                                     Random.Range(minDistance, maxDistance);
         
         
-        // Create the asteroid.
-        Vector2 worldSpawnPosition = Helpers.Camera.ViewportToWorldPoint
-        (viewportSpawnPosition
-        );
         Asteroid asteroid =
             Instantiate(asteroidPrefab, worldSpawnPosition, Quaternion.identity);
+        
+        // Set size of asteroid to be 3 or 2 (20% of time)
+        asteroid.size = Random.value < 0.2f ? 3 : 2;
         
         
     }

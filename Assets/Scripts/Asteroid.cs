@@ -11,7 +11,7 @@ public class Asteroid : MonoBehaviour
     public float size = 3f;
     private Player p;
 
-    public float maxDistanceFromPlayer = 50f;
+    public float maxDistanceFromPlayer = 500f;
     public GameObject myprefab;
     private void Start()
     {
@@ -58,7 +58,7 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Asteroid collides with player");
+         
             TakeDamage(0);
             p.TakeDamage(10f * size);
         }
@@ -101,7 +101,9 @@ public class Asteroid : MonoBehaviour
 
     void RandomKick(float baseMagnitude = 3f)
     {
-        Vector2 direction = new Vector2(Random.value, Random.value).normalized;
+        
+        // Random direction along the unit circle.
+        Vector2 direction = Random.insideUnitCircle.normalized;
         KickInDirection(direction, baseMagnitude);
     }
 

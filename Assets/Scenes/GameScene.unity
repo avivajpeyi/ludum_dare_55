@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3530322864064614344, guid: b6ceda3cbe5a41ff490cd01871cc7d70, type: 3}
       propertyPath: orthographic size
-      value: 17.69924
+      value: 16.70963
       objectReference: {fileID: 0}
     - target: {fileID: 5480183450529518637, guid: b6ceda3cbe5a41ff490cd01871cc7d70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -212,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 1142991250}
     - target: {fileID: 6466158013326171338, guid: f92504318910d4a3eaeb5e0e9b44db2f, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 17.69924
+      value: 16.70963
       objectReference: {fileID: 0}
     - target: {fileID: 7601865428722683201, guid: f92504318910d4a3eaeb5e0e9b44db2f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -306,10 +306,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 6797351453673142050, guid: e2aefecfd55374e6c884dca03790501a, type: 3}
-  maxAsteroids: 100
-  numToSpawn: 10
+  maxAsteroids: 200
+  numToSpawn: 30
   asteroidCount: 0
   timeBwSpawns: 1
+  minDistance: 39.5
+  maxDistance: 300
 --- !u!4 &590339143
 Transform:
   m_ObjectHideFlags: 0
