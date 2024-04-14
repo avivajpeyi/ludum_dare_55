@@ -12,7 +12,8 @@ public class Player : Singleton<Player>
     public float maxSpeed = 30f;
     public float MaxHealth = 100f;
     private float _currentHealth = 100f;
-
+    public AudioClip getHit;
+    public AudioClip destroyed;
 
     public static event Action<float> OnPlayerTakeDamage;
     public static event Action OnGameOver;
@@ -51,11 +52,13 @@ public class Player : Singleton<Player>
     public void TakeDamage(float damage)
     {
         // Trigger the takedamage event
+        SoundManager.instance.playSound(getHit, transform, 1f);
         MaxHealth -= damage;
         OnPlayerTakeDamage?.Invoke(damage);
         
         if (MaxHealth <= 0)
         {
+            SoundManager.instance.playSound(destroyed, transform, 1f);
             Die();
         }
     }
