@@ -11,6 +11,7 @@ public class GameOverManager : MonoBehaviour
 
     public TMP_Text game_over_text;
 
+    private float timeBeforeRestartTxt = 1f;
     private bool canRestart = false;
     
 
@@ -56,13 +57,15 @@ public class GameOverManager : MonoBehaviour
         {
             game_over_text.text = "Tap to Restart";
             game_over_text.DOFade(1, 1f);
+            canRestart = true;
         });
     }
     
     
 private void Update()
     {
-        if (canRestart && Input.GetMouseButtonDown(0))
+        // any button/click to restart
+        if (canRestart && Input.GetMouseButtonDown(0)) 
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
