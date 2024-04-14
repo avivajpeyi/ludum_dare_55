@@ -46,7 +46,6 @@ public class Attractor : Summonable
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Triggered");
         if (other.CompareTag("Player"))
         {
             Destroy(this.gameObject);
@@ -67,7 +66,8 @@ public class Attractor : Summonable
         {
             gravitationalBody.enabled = true;
             Destroy(this.gameObject, 2f);
-            SoundManager.instance.playSound(sfx, transform, 1f);
+            if (SoundManager.instance != null)
+                SoundManager.instance.playSound(sfx, transform, 1f);
         }
     }
 
