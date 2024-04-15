@@ -8,17 +8,21 @@ public class GoalSpawner : MonoBehaviour {
     public float spawnRadius = 10f;
     private GameObject currentGoal;
     private GameObject pointer;
+    private Player player;
 
     void Start() {
         pointer = FindObjectOfType<GoalPointer>().gameObject;
+        player = FindObjectOfType<Player>();
         SpawnGoal();
-       
     }
 
     public void SpawnGoal() {
         Vector2 randomDirection = Random.insideUnitCircle.normalized;
-        Vector2 spawnPosition = (Vector2)transform.position + randomDirection * Random.Range(0f, spawnRadius);
-
+        
+        Vector2 spawnPosition = (Vector2)player.transform.position + randomDirection * 
+        Random.Range(0f, 
+        spawnRadius);
+        
         if(currentGoal != null) {
             Destroy(currentGoal);
         }
