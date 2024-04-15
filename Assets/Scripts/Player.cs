@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class Player : Singleton<Player>
@@ -14,9 +15,11 @@ public class Player : Singleton<Player>
     private float _currentHealth;
     private PlayerHealthbarUI _healthbarUI;
 
+    private CinemachineImpulseSource impulseSource;
 
     public static event Action OnGameOver;
     public void TriggerGameOver() => OnGameOver?.Invoke();
+    private CameraShake cameraShake;
 
     public float speed
     {
@@ -29,6 +32,7 @@ public class Player : Singleton<Player>
         _currentHealth = MaxHealth;
         _healthbarUI = FindObjectOfType<PlayerHealthbarUI>();
         _healthbarUI.InitBar(_currentHealth);
+        cameraShake = FindObjectOfType<CameraShake>();
     }
 
     private Vector2 dir
@@ -61,7 +65,7 @@ public class Player : Singleton<Player>
         {
             return;
         }
-        // CameraShake.Instance.ShakeCamera(0.8f, 0.1f);
+        CameraShake.Instance.ShakeCamera(impulseSource);
         
         damageCooldown = Time.time;
         _currentHealth -= damage;
