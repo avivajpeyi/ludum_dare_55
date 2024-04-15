@@ -11,10 +11,10 @@ public class Player : Singleton<Player>
     private Rigidbody2D _rb;
     public float maxSpeed = 20f;
     public float MaxHealth = 100f;
-    private float _currentHealth = 100f;
+    private float _currentHealth;
+    private PlayerHealthbarUI _healthbarUI;
 
 
-    public static event Action<float> OnPlayerTakeDamage;
     public static event Action OnGameOver;
     public void TriggerGameOver() => OnGameOver?.Invoke();
 
@@ -27,6 +27,8 @@ public class Player : Singleton<Player>
     {
         _rb = GetComponent<Rigidbody2D>();
         _currentHealth = MaxHealth;
+        _healthbarUI = FindObjectOfType<PlayerHealthbarUI>();
+        _healthbarUI.InitBar(_currentHealth);
     }
 
     private Vector2 dir
@@ -46,7 +48,10 @@ public class Player : Singleton<Player>
         // Clamp the speed of the player
         _rb.velocity = Vector2.ClampMagnitude(_rb.velocity, maxSpeed);
     }
-    
+
+
+
+
     float damageCooldown = 0.5f;
 
     public void TakeDamage(float damage)
@@ -56,21 +61,28 @@ public class Player : Singleton<Player>
         {
             return;
         }
+        // CameraShake.Instance.ShakeCamera(0.8f, 0.1f);
         
         damageCooldown = Time.time;
-        MaxHealth -= damage;
-        OnPlayerTakeDamage?.Invoke(damage);
+        _currentHealth -= damage;
+        _healthbarUI.SetBarValue(_currentHealth);
         
-        if (MaxHealth <= 0)
+        if (_currentHealth <= 0)
         {
             Die();
         }
+        
+        // ScreenShake
+        
+        
+        
     }
 
     public void Die()
     {
         // Destroy the player object
         Debug.Log("Player died!");
+        _healthbarUI.DisableHealthbar();
         TriggerGameOver();
         // Play the Game over FX
         _rb.velocity = Vector2.zero;

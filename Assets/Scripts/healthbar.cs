@@ -1,44 +1,28 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealthbarUI : Singleton<PlayerHealthbarUI> {
-    private Slider _health;
+public class PlayerHealthbarUI : StaticInstance<PlayerHealthbarUI> {
+    private Slider _healthbar;
 
-    void Start() {
-        _health = GetComponent<Slider>();
-        _health.minValue = 0f;
-        _health.maxValue = 100f;
-        _health.value = 100f; // Health bar starts full
-        
-        // Subscribe to player damage event
-        Player.OnPlayerTakeDamage += TakeDamage;
-        Player.OnGameOver += DisableHealthbar;
+    private void Awake() {
+        _healthbar = GetComponent<Slider>();
     }
-
-    private void OnDestroy()
-    {
-        // Unsubscribe from player damage event
-        Player.OnPlayerTakeDamage -= TakeDamage;
-        Player.OnGameOver -= DisableHealthbar;
-    }
-
-    void Update() {
     
-        // Health regeneration over time until full
-        if(_health.minValue < _health.value
-        && _health.value < _health.maxValue) {
-            _health.value += 2f * Time.deltaTime;
-        }
-
-        
+    public void InitBar(float max)
+    {
+        _healthbar.minValue = 0f;
+        _healthbar.maxValue = max;
+        _healthbar.value = max;
     }
-
-    void TakeDamage(float damageValue) {
-        _health.value -= damageValue;
+    
+   public  void SetBarValue(float value) {
+        _healthbar.value = value;
     }
+    
 
-    void DisableHealthbar() {
+   public void DisableHealthbar() {
         gameObject.SetActive(false);
     }
     

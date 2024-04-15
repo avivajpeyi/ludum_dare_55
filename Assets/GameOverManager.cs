@@ -13,8 +13,10 @@ public class GameOverManager : MonoBehaviour
 
     private float timeBeforeRestartTxt = 1.5f;
     private bool canRestart = false;
-    
 
+    private Player p;
+    
+    
     private void Start()
     {
         children = new List<GameObject>();
@@ -24,6 +26,7 @@ public class GameOverManager : MonoBehaviour
         }
 
         SetChildState(false);
+        
         Player.OnGameOver += OnPlayerDeath;
     }
 

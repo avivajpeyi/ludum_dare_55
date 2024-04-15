@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -70,6 +71,7 @@ public class Attractor : Summonable
                 SoundManager.instance.playSound(sfx, transform, 1f);
         }
     }
+    
 
     public override void Grow()
     {

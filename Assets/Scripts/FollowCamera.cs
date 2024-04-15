@@ -31,4 +31,7 @@ public class FollowCamera : MonoBehaviour
     {
         UpdateOrthographicSize();
     }
+    
+    
+    
 }
