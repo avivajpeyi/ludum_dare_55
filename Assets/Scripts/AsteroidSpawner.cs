@@ -69,7 +69,7 @@ public class AsteroidSpawner : Singleton<AsteroidSpawner>
             Debug.Log("Spawned too close to player, retrying...");
         }
         
-        Debug.Log("Asteroid spanw at: " + distSpawned + " units away from player");
+
         
         Asteroid asteroid =
             Instantiate(asteroidPrefab, worldSpawnPosition, Quaternion.identity);
@@ -88,10 +88,7 @@ public class AsteroidSpawner : Singleton<AsteroidSpawner>
         {
             asteroid.updateSize(3);
         }
-        else
-        {
-            asteroid.updateSize(2);
-        }
+
         
         
     }

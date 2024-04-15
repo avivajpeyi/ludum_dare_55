@@ -19,18 +19,23 @@ public class Asteroid : MonoBehaviour
     {
         p = FindObjectOfType<Player>();
         col = GetComponent<Collider2D>();
+        rb = GetComponent<Rigidbody2D>();
+        
         col.enabled = false;
+        rb.simulated = false;
         // DoTween animation to smoothly spawn the asteroid.
         transform.localScale = Vector3.zero;
         updateSize(size);
 
 
-        rb = GetComponent<Rigidbody2D>();
+        
         transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
 
         rb.AddTorque(Random.Range(-0.01f, 0.01f), ForceMode2D.Impulse);
         RandomKick();
 
+        Invoke("EnableCol", 0.3f);
+        
         // Register creation
         AsteroidSpawner.Instance.asteroidCount++;
     }
@@ -43,10 +48,6 @@ public class Asteroid : MonoBehaviour
         // Do tween to smoothly scale the asteroid.
         transform.DOScale(endSize, 0.5f).SetEase(Ease.OutBounce);
         
-        // Wait 1 sec before enabling the collider.
-        Invoke("EnableCol", 1f);
-
-
         // transform.DOScale(endSize, 0.5f).SetEase(Ease.OutBounce);
         // Aftrer tween transform.localScale = 5f * size * Vector3.one;
     }
@@ -54,6 +55,8 @@ public class Asteroid : MonoBehaviour
     void EnableCol()
     {
         col.enabled = true;
+        // enable rb
+        rb.simulated = true;
     }
 
 
@@ -79,9 +82,10 @@ public class Asteroid : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject==p.gameObject)
         {
-            Debug.Log(col.name + " (player) collided with " + collision.collider.name + " (asteroid)");
+            Debug.Log(collision.collider.name + " (player) collided with " + col.name + 
+            " (asteroid) " + this.size);
             TakeDamage(0);
             p.TakeDamage(10f * size);
         }

@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSize: 1
   radius: 10
-  power: 1000
+  power: 250
   sfx: {fileID: 8300000, guid: 9500debb097b745bebd1762aba6d3dc9, type: 3}
   explosionEffect: {fileID: 6478029048956227354, guid: e52f95dcfc9334a5a9477f4e934bc263, type: 3}
 --- !u!1001 &708674344608324634

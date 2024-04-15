@@ -13,7 +13,7 @@ public class Player : Singleton<Player>
     private Rigidbody2D _rb;
     public float maxSpeed = 20f;
     public float MaxHealth = 100f;
-    private float _currentHealth;
+    public float _currentHealth;
     private PlayerHealthbarUI _healthbarUI;
 
     private Color lightRed = new Color(180f/255f, 81f/255f, 84f/255f);

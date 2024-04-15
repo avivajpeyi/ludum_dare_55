@@ -97,13 +97,13 @@ public class ClickController : Singleton<ClickController>
         {
             if (timeSinceClickStartTime < longClickTimeThreshold)
             {
-                Debug.Log("Quick click!");
+                
                 TriggerQuickClick();
             }
 
             else
             {
-                Debug.Log("Long click ended");
+                
                 TriggerLongClickEnd();
                 longClickStarted = false;
             }
