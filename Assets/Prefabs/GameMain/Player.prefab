@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5076406772701831208}
   - component: {fileID: 2099051683583429516}
   - component: {fileID: 6817279570377669638}
-  - component: {fileID: 4251650751450081661}
+  - component: {fileID: 1689682172651426809}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -82,8 +82,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverFX: {fileID: 0}
-  maxSpeed: 40
+  maxSpeed: 30
   MaxHealth: 300
+  _currentHealth: 0
 --- !u!114 &5076406772701831208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,8 +165,8 @@ MonoBehaviour:
     m_DissipationDistance: 100
     m_PropagationSpeed: 343
   m_DefaultVelocity: {x: 0, y: -1, z: 0}
---- !u!60 &4251650751450081661
-PolygonCollider2D:
+--- !u!58 &1689682172651426809
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -197,21 +198,8 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.44, y: 0.03}
-      - {x: -0.35, y: 0.24}
-      - {x: -0.35, y: -0.38}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &3729078064664051186
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +210,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6085463720588048487}
   - component: {fileID: 5663780744564949336}
-  - component: {fileID: 2041801385410579485}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -297,18 +284,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2041801385410579485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3729078064664051186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 225bce8101839482ea9be048bf2a0f7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6385250916699087195
 GameObject:
   m_ObjectHideFlags: 0

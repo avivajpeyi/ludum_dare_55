@@ -21,7 +21,7 @@ public class AsteroidSpawner : Singleton<AsteroidSpawner>
     private float timeSinceLastSpawn = 0f;
 
     [SerializeField]
-    private float minDistance = 30f;
+    private float minDistance = 100f;
     [SerializeField]
     private float maxDistance = 400f;
 
@@ -58,16 +58,23 @@ public class AsteroidSpawner : Singleton<AsteroidSpawner>
     private void SpawnAsteroid()
     {
         // Get random position in world around the player
-        Vector3 worldSpawnPosition = Player.Instance.transform.position +
+        Vector2 worldSpawnPosition = Player.Instance.transform.position +
                                      Random.insideUnitSphere.normalized *
                                      Random.Range(minDistance, maxDistance);
+        
+        
+        Vector2 dir = (worldSpawnPosition - (Vector2) Player.Instance.transform.position).normalized;
+        worldSpawnPosition += (dir * 30f);
         
         float distSpawned = Vector3.Distance(Player.Instance.transform.position, worldSpawnPosition);
         
         if (distSpawned <= minDistance)
         {
-            Debug.Log("Spawned too close to player, retrying...");
+            Debug.Log("Spawned too close to player, SKIPPING...");
+            return;
+            
         }
+        Debug.Log("dists " + distSpawned);
         
 
         

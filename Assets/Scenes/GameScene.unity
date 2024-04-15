@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3530322864064614344, guid: b6ceda3cbe5a41ff490cd01871cc7d70, type: 3}
       propertyPath: orthographic size
-      value: 16.48367
+      value: 25.41811
       objectReference: {fileID: 0}
     - target: {fileID: 5480183450529518637, guid: b6ceda3cbe5a41ff490cd01871cc7d70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -212,7 +212,7 @@ PrefabInstance:
       objectReference: {fileID: 1142991250}
     - target: {fileID: 6466158013326171338, guid: f92504318910d4a3eaeb5e0e9b44db2f, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 16.48367
+      value: 25.41811
       objectReference: {fileID: 0}
     - target: {fileID: 7601865428722683201, guid: f92504318910d4a3eaeb5e0e9b44db2f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -306,12 +306,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 6797351453673142050, guid: e2aefecfd55374e6c884dca03790501a, type: 3}
-  maxAsteroids: 500
+  maxAsteroids: 300
   numToSpawn: 30
   asteroidCount: 0
-  timeBwSpawns: 0.5
-  minDistance: 50
-  maxDistance: 300
+  timeBwSpawns: 0.25
+  minDistance: 30
+  maxDistance: 100
 --- !u!4 &590339143
 Transform:
   m_ObjectHideFlags: 0
@@ -440,14 +440,6 @@ PrefabInstance:
     - target: {fileID: 725601580524241606, guid: 20a059dde0df15ec2994c0a7a4fd09e5, type: 3}
       propertyPath: m_Name
       value: Goal
-      objectReference: {fileID: 0}
-    - target: {fileID: 6267252603100808354, guid: 20a059dde0df15ec2994c0a7a4fd09e5, type: 3}
-      propertyPath: m_ImpulseDefinition.m_ImpulseType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6267252603100808354, guid: 20a059dde0df15ec2994c0a7a4fd09e5, type: 3}
-      propertyPath: m_ImpulseDefinition.m_DissipationRate
-      value: 0.127
       objectReference: {fileID: 0}
     - target: {fileID: 6483225184530212260, guid: 20a059dde0df15ec2994c0a7a4fd09e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -688,10 +680,6 @@ PrefabInstance:
     - target: {fileID: 3561667074923200446, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3710379274285434501, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
-      propertyPath: maxSpeed
-      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5696195704368011966, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
       propertyPath: m_LocalPosition.x
