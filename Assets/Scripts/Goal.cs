@@ -11,6 +11,7 @@ public class Goal : MonoBehaviour
     private CameraShake cameraShake;
     public GameObject explosionFX;
     private Player p;
+    public AudioClip sound;
 
     private CinemachineImpulseSource impulseSource;
     void Start() {
@@ -27,7 +28,7 @@ public class Goal : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            
+            SoundManager.instance.playSound(sound, transform, 1f);
             Instantiate(explosionFX, transform.position, Quaternion.identity);
             score.IncreaseScore();
             spawner.SpawnGoal();

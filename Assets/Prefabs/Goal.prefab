@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionFX: {fileID: 417761080263594737, guid: 06cf02762acbb469d817c91a8d92eaef, type: 3}
+  sound: {fileID: 8300000, guid: 8279123bf7a622e41988782aa5f561b7, type: 3}
 --- !u!114 &6267252603100808354
 MonoBehaviour:
   m_ObjectHideFlags: 0
