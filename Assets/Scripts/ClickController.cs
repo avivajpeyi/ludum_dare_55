@@ -132,6 +132,8 @@ public class ClickController : Singleton<ClickController>
 
     void SummonAttractor()
     {
+        if (_currentAttractor == null)
+            return;
         _currentAttractor.Summon();
         startGrowing = false;
     }
