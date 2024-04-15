@@ -13,18 +13,21 @@ public class Asteroid : MonoBehaviour
 
     public float maxDistanceFromPlayer = 500f;
     public GameObject myprefab;
+    private Collider2D col;
+
     private void Start()
     {
-
         p = FindObjectOfType<Player>();
+        col = GetComponent<Collider2D>();
+        col.enabled = false;
         // DoTween animation to smoothly spawn the asteroid.
         transform.localScale = Vector3.zero;
         updateSize(size);
-        
-        
+
+
         rb = GetComponent<Rigidbody2D>();
         transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
-        
+
         rb.AddTorque(Random.Range(-0.01f, 0.01f), ForceMode2D.Impulse);
         RandomKick();
 
@@ -38,20 +41,23 @@ public class Asteroid : MonoBehaviour
         size = s;
         Vector3 endSize = 5f * size * Vector3.one;
         // Do tween to smoothly scale the asteroid.
-        transform.DOScale(endSize, 0.5f).SetEase(Ease.OutBounce);
-        
+        transform.DOScale(endSize, 0.5f).SetEase(Ease.OutBounce).OnComplete(EnableCol);
+
+
         // transform.DOScale(endSize, 0.5f).SetEase(Ease.OutBounce);
         // Aftrer tween transform.localScale = 5f * size * Vector3.one;
-        
-
     }
-    
+
+    void EnableCol()
+    {
+        col.enabled = true;
+    }
+
 
     float DistFromPlayer
     {
         get
         {
-            
             return Vector2.Distance(p.transform.position,
                 transform.position);
         }
@@ -72,7 +78,7 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-         
+            Debug.Log("PLAYER TAKE DAMAGE FROM ASTEROID!");
             TakeDamage(0);
             p.TakeDamage(10f * size);
         }
@@ -87,10 +93,11 @@ public class Asteroid : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-    	if (myprefab != null)
+        if (myprefab != null)
         {
-        Instantiate(myprefab, transform.position, Quaternion.identity);
+            Instantiate(myprefab, transform.position, Quaternion.identity);
         }
+
         // If size > 1 spawn 2 smaller asteroids of size-1.
         if (size > 1)
         {
@@ -115,7 +122,6 @@ public class Asteroid : MonoBehaviour
 
     void RandomKick(float baseMagnitude = 3f)
     {
-        
         // Random direction along the unit circle.
         Vector2 direction = Random.insideUnitCircle.normalized;
         KickInDirection(direction, baseMagnitude);

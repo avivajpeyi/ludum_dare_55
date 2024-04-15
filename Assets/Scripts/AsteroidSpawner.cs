@@ -62,6 +62,11 @@ public class AsteroidSpawner : Singleton<AsteroidSpawner>
                                      Random.insideUnitSphere.normalized *
                                      Random.Range(minDistance, maxDistance);
         
+        if (Vector3.Distance(Player.Instance.transform.position, worldSpawnPosition) <= minDistance)
+        {
+            Debug.Log("Spawned too close to player, retrying...");
+        }
+        
         
         Asteroid asteroid =
             Instantiate(asteroidPrefab, worldSpawnPosition, Quaternion.identity);

@@ -16,6 +16,8 @@ public class Player : Singleton<Player>
     private PlayerHealthbarUI _healthbarUI;
 
     private CinemachineImpulseSource impulseSource;
+    
+    private Sprite _sprite;
 
     public static event Action OnGameOver;
     public void TriggerGameOver() => OnGameOver?.Invoke();
@@ -33,6 +35,8 @@ public class Player : Singleton<Player>
         _healthbarUI = FindObjectOfType<PlayerHealthbarUI>();
         _healthbarUI.InitBar(_currentHealth);
         cameraShake = FindObjectOfType<CameraShake>();
+        impulseSource = GetComponent<CinemachineImpulseSource>();
+        
     }
 
     private Vector2 dir
@@ -40,6 +44,19 @@ public class Player : Singleton<Player>
         get { return _rb.velocity.normalized; }
     }
 
+
+    private void OnDrawGizmos()
+    {
+        
+        // Draw a line in the direction of the player
+        Gizmos.color = Color.green;
+        if (_rb != null)
+        {
+            Gizmos.DrawLine(transform.position, transform.position + (Vector3) dir);
+        }
+        
+        
+    }
 
     private void FixedUpdate()
     {
@@ -65,7 +82,7 @@ public class Player : Singleton<Player>
         {
             return;
         }
-        CameraShake.Instance.ShakeCamera(impulseSource);
+        cameraShake.ShakeCamera(impulseSource);
         
         damageCooldown = Time.time;
         _currentHealth -= damage;

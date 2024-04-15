@@ -143,6 +143,7 @@ public class ClickController : Singleton<ClickController>
 
     void Disable()
     {
-        this.enabled = false;
+        if (this!=null)
+            this.enabled = false;
     }
 }
