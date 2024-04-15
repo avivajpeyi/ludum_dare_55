@@ -20,6 +20,10 @@ public class PlayerHealthbarUI : StaticInstance<PlayerHealthbarUI> {
    public  void SetBarValue(float value) {
         _healthbar.value = value;
     }
+
+    public void SetBarColor(Color color) {
+        _healthbar.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = color;
+    }
     
 
    public void DisableHealthbar() {
