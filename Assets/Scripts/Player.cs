@@ -16,6 +16,9 @@ public class Player : Singleton<Player>
     public float _currentHealth;
     private PlayerHealthbarUI _healthbarUI;
 
+    public AudioClip getHit;
+    public AudioClip destroyed;
+
     private Color lightRed = new Color(180f/255f, 81f/255f, 84f/255f);
     private Color darkRed = new Color(128f/255f, 48f/255f, 66f/255f);
     private Color white = new Color(255f/255f, 255f/255f, 255f/255f);
@@ -90,11 +93,19 @@ public class Player : Singleton<Player>
             return;
         }
         cameraShake.ShakeCamera(impulseSource);
-        
+
         damageCooldown = Time.time;
         _currentHealth -= damage;
         _healthbarUI.SetBarValue(_currentHealth);
-        
+
+        if(_currentHealth <= 0f)
+        {
+            SoundManager.instance.playSound(destroyed, transform, 1f);
+        } else
+        {
+            SoundManager.instance.playSound(getHit, transform, 1f);
+        }
+
         if (_currentHealth <= 0f)
         {
             Die();
