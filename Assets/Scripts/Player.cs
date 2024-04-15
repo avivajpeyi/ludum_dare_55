@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Cinemachine;
 using UnityEngine;
 
 public class Player : Singleton<Player>
@@ -20,9 +21,13 @@ public class Player : Singleton<Player>
     private Color white = new Color(255f/255f, 255f/255f, 255f/255f);
 
 
+    private CinemachineImpulseSource impulseSource;
+    
+    private Sprite _sprite;
 
     public static event Action OnGameOver;
     public void TriggerGameOver() => OnGameOver?.Invoke();
+    private CameraShake cameraShake;
 
     public float speed
     {
@@ -36,6 +41,9 @@ public class Player : Singleton<Player>
         _healthbarUI = FindObjectOfType<PlayerHealthbarUI>();
         _healthbarUI.InitBar(_currentHealth);
         _healthbarUI.SetBarColor(white);
+        cameraShake = FindObjectOfType<CameraShake>();
+        impulseSource = GetComponent<CinemachineImpulseSource>();
+        
     }
 
     private Vector2 dir
@@ -43,6 +51,19 @@ public class Player : Singleton<Player>
         get { return _rb.velocity.normalized; }
     }
 
+
+    private void OnDrawGizmos()
+    {
+        
+        // Draw a line in the direction of the player
+        Gizmos.color = Color.green;
+        if (_rb != null)
+        {
+            Gizmos.DrawLine(transform.position, transform.position + (Vector3) dir);
+        }
+        
+        
+    }
 
     private void FixedUpdate()
     {
@@ -68,7 +89,7 @@ public class Player : Singleton<Player>
         {
             return;
         }
-        // CameraShake.Instance.ShakeCamera(0.8f, 0.1f);
+        cameraShake.ShakeCamera(impulseSource);
         
         damageCooldown = Time.time;
         _currentHealth -= damage;
