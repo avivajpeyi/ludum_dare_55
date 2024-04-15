@@ -41,7 +41,10 @@ public class Asteroid : MonoBehaviour
         size = s;
         Vector3 endSize = 5f * size * Vector3.one;
         // Do tween to smoothly scale the asteroid.
-        transform.DOScale(endSize, 0.5f).SetEase(Ease.OutBounce).OnComplete(EnableCol);
+        transform.DOScale(endSize, 0.5f).SetEase(Ease.OutBounce);
+        
+        // Wait 1 sec before enabling the collider.
+        Invoke("EnableCol", 1f);
 
 
         // transform.DOScale(endSize, 0.5f).SetEase(Ease.OutBounce);
@@ -78,7 +81,7 @@ public class Asteroid : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("PLAYER TAKE DAMAGE FROM ASTEROID!");
+            Debug.Log(col.name + " (player) collided with " + collision.collider.name + " (asteroid)");
             TakeDamage(0);
             p.TakeDamage(10f * size);
         }
