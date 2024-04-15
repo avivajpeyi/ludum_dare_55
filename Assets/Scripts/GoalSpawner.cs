@@ -19,9 +19,11 @@ public class GoalSpawner : MonoBehaviour {
     public void SpawnGoal() {
         Vector2 randomDirection = Random.insideUnitCircle.normalized;
         
-        Vector2 spawnPosition = (Vector2)player.transform.position + randomDirection * 
-        Random.Range(0f, 
-        spawnRadius);
+        // Vector2 spawnPosition = (Vector2)player.transform.position + randomDirection * 
+        // Random.Range(0f, 
+        // spawnRadius);
+        
+        Vector2 spawnPosition = randomDirection * Random.Range(0f, spawnRadius); // centered at 0
         
         if(currentGoal != null) {
             Destroy(currentGoal);

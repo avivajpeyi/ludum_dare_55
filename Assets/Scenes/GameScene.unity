@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3530322864064614344, guid: b6ceda3cbe5a41ff490cd01871cc7d70, type: 3}
       propertyPath: orthographic size
-      value: 19.87866
+      value: 24.07667
       objectReference: {fileID: 0}
     - target: {fileID: 5480183450529518637, guid: b6ceda3cbe5a41ff490cd01871cc7d70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -194,6 +194,81 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 716665055}
   m_SourcePrefab: {fileID: 100100000, guid: b6ceda3cbe5a41ff490cd01871cc7d70, type: 3}
+--- !u!1 &304977512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 304977515}
+  - component: {fileID: 304977514}
+  - component: {fileID: 304977513}
+  m_Layer: 5
+  m_Name: HealthPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &304977513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304977512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0.3529412, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: aeb5cc1d216e0407da9b1b50f4db162c, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &304977514
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304977512}
+  m_CullTransparentMesh: 1
+--- !u!224 &304977515
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304977512}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1503246434}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &464343227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,7 +287,7 @@ PrefabInstance:
       objectReference: {fileID: 1142991250}
     - target: {fileID: 6466158013326171338, guid: f92504318910d4a3eaeb5e0e9b44db2f, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 19.87866
+      value: 24.07667
       objectReference: {fileID: 0}
     - target: {fileID: 7601865428722683201, guid: f92504318910d4a3eaeb5e0e9b44db2f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -271,6 +346,7 @@ GameObject:
   - component: {fileID: 590339142}
   - component: {fileID: 590339141}
   - component: {fileID: 590339144}
+  - component: {fileID: 590339145}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -342,6 +418,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goal: {fileID: 725601580524241606, guid: 20a059dde0df15ec2994c0a7a4fd09e5, type: 3}
   spawnRadius: 100
+--- !u!114 &590339145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590339140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb3651524e6b4fc1a2e827f59a35ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowdownFactor: 0.05
+  slowdownLength: 2
 --- !u!1 &716665050 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 635885554645246884, guid: b6ceda3cbe5a41ff490cd01871cc7d70, type: 3}
@@ -443,7 +533,7 @@ GameObject:
   - component: {fileID: 1024787330}
   - component: {fileID: 1024787329}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: FlashInstructions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -679,21 +769,25 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 838289920060560996, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2539197133906950692, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2651248443813355636, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.676
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2651248443813355636, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2651248443813355636, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.676
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3442710116753594064, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
       propertyPath: m_IsActive
@@ -841,6 +935,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5764353144689451744, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1024787326}
+    - targetCorrespondingSourceObject: {fileID: 5764353144689451744, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 304977515}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d67afd92bd58d38e5af8dd0583a446eb, type: 3}
 --- !u!1001 &1236073605
@@ -863,6 +960,14 @@ PrefabInstance:
       propertyPath: destroyed
       value: 
       objectReference: {fileID: 8300000, guid: 26a45a9979b80a44290f0d625a6c8f93, type: 3}
+    - target: {fileID: 3710379274285434501, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
+      propertyPath: playerHealthFlashImage
+      value: 
+      objectReference: {fileID: 304977513}
+    - target: {fileID: 5076406772701831208, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
+      propertyPath: startingMass
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5696195704368011966, guid: 4a3bb4c09763e4227ae4e8777cef86ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
