@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Cinemachine;
 using UnityEngine;
 
@@ -14,6 +15,11 @@ public class Player : Singleton<Player>
     public float MaxHealth = 100f;
     private float _currentHealth;
     private PlayerHealthbarUI _healthbarUI;
+
+    private Color lightRed = new Color(180f/255f, 81f/255f, 84f/255f);
+    private Color darkRed = new Color(128f/255f, 48f/255f, 66f/255f);
+    private Color white = new Color(255f/255f, 255f/255f, 255f/255f);
+
 
     private CinemachineImpulseSource impulseSource;
     
@@ -34,6 +40,7 @@ public class Player : Singleton<Player>
         _currentHealth = MaxHealth;
         _healthbarUI = FindObjectOfType<PlayerHealthbarUI>();
         _healthbarUI.InitBar(_currentHealth);
+        _healthbarUI.SetBarColor(white);
         cameraShake = FindObjectOfType<CameraShake>();
         impulseSource = GetComponent<CinemachineImpulseSource>();
         
@@ -88,15 +95,24 @@ public class Player : Singleton<Player>
         _currentHealth -= damage;
         _healthbarUI.SetBarValue(_currentHealth);
         
-        if (_currentHealth <= 0)
+        if (_currentHealth <= 0f)
         {
             Die();
         }
-        
+        else if (_currentHealth < MaxHealth / 5) {
+            _healthbarUI.SetBarColor(darkRed);
+        }
+        else if (_currentHealth < MaxHealth / 2)
+        {
+            _healthbarUI.SetBarColor(lightRed);
+        } 
+        else
+        {
+            _healthbarUI.SetBarColor(white);
+        }
+
         // ScreenShake
-        
-        
-        
+
     }
 
     public void Die()

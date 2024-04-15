@@ -171,7 +171,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 26.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -936,6 +936,30 @@ PrefabInstance:
     - target: {fileID: 957065007811595333, guid: eab3819ef79d97f36a9d769664be89e7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.5036011
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517508684794397659, guid: eab3819ef79d97f36a9d769664be89e7, type: 3}
+      propertyPath: m_Color.a
+      value: 0.6862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517508684794397659, guid: eab3819ef79d97f36a9d769664be89e7, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517508684794397659, guid: eab3819ef79d97f36a9d769664be89e7, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517508684794397659, guid: eab3819ef79d97f36a9d769664be89e7, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517508684794397659, guid: eab3819ef79d97f36a9d769664be89e7, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517508684794397659, guid: eab3819ef79d97f36a9d769664be89e7, type: 3}
+      propertyPath: m_RaycastTargetCache
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1882370280125629433, guid: eab3819ef79d97f36a9d769664be89e7, type: 3}
       propertyPath: m_Pivot.x
