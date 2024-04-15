@@ -14,6 +14,7 @@ public class ClickController : Singleton<ClickController>
     private bool isMouseDown = false;
     private Attractor _currentAttractor;
     private int spwnIndex = 0;
+    private BulletTIme bulletTime;
 
     bool startGrowing = false;
 
@@ -54,6 +55,7 @@ public class ClickController : Singleton<ClickController>
 
     private void Start()
     {
+        bulletTime = GetComponent<BulletTIme>();
         OnQuickClick += SpawnBomb;
         OnLongClickStart += SpawnAttractor;
         OnLongClickEnd += SummonAttractor;
@@ -122,6 +124,7 @@ public class ClickController : Singleton<ClickController>
 
     void SpawnAttractor()
     {
+        bulletTime.DoSlowmotion();
         _currentAttractor = Instantiate(AttractorPrefab, mousePos, Quaternion.identity)
             .GetComponent<Attractor>();
         startGrowing = true;

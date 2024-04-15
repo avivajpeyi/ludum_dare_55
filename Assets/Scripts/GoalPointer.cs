@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -6,6 +7,8 @@ using UnityEngine;
 
 public class GoalPointer : StaticInstance<GoalPointer>
 {
+    
+    private  Player player;
 
     private LineRenderer myLine;
     private Vector3 targetPosition
@@ -28,16 +31,23 @@ public class GoalPointer : StaticInstance<GoalPointer>
 
     private void Awake()
     {
+        
         pointer = transform.Find("Pointer").gameObject;
         myLine = transform.GetComponentInChildren<LineRenderer>();
     }
 
 
+    private void Start()
+    {
+        
+        player = FindObjectOfType<Player>();
+    }
+
     private void Update()
     {
         Vector3 toPosition = targetPosition;
-        Vector3 fromPosition = new Vector3(Player.Instance.transform.position.x,
-            Player.Instance.transform.position.y);
+        Vector3 fromPosition = new Vector3(player.transform.position.x,
+            player.transform.position.y);
         Vector3 dir = (toPosition - fromPosition).normalized;
 
         float angle = (Mathf.Atan2(dir.y, dir.x) - 89.5f) * Mathf.Rad2Deg;

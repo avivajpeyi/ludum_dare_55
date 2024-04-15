@@ -112,7 +112,7 @@ MonoBehaviour:
   destroyedParticles: {fileID: 0}
   rb: {fileID: 0}
   size: 3
-  maxDistanceFromPlayer: 300
+  maxDistanceFromPlayer: 250
   myprefab: {fileID: 6146545414153545494, guid: 295facfa93a781d4a9c4de054953da41, type: 3}
 --- !u!1 &4134722614576553771
 GameObject:

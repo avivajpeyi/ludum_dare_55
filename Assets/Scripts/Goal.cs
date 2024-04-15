@@ -46,7 +46,7 @@ public class Goal : MonoBehaviour
                 }
             }
 
-            p._currentHealth = p.MaxHealth;
+            p.Heal();
             
             Destroy(this.gameObject, 0.1f);
         }
